@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<style>
+    .pad{
+        padding: 100px;
+    }
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+}
+hr.solid {
+  border-top: 3px solid black;
+}
+.weighed {
+  font-weight: bold;
+}
+li {
+  text-indent: 50px;
+}
+.next-to-text {
+ display: grid;
+ align-items: center; 
+ grid-template-columns: 1fr 1fr 1fr;
+ column-gap: 5px;
+}
+</style>
+</head>
+<body>
+  <header>
+    <div class="next-to-text">
+      <img src="samplelogo.jpg" alt="mdrlogo">
+    <center>
+      Republic of the Phillipines<br>
+      Province of Pangasinan<br>
+      <h5><b>Municipality of Rosales</b></h5>
+      <h6><b>DISASTER RISK REDUCTION  AND MANAGEMENT</b></h6>
+    </center>
+    </div>
+  </header>
+<hr class="solid"> 
+  <br><br><br>
+<div class="container weighed">
+Memorandum for the PDRRMO<br>
+<br>
+
+ATTN: <input type="text" id="attn" name="attn"> <br>
+FROM: <input type="text" id="attn" name="attn"> <br><br>
+@foreach ($sitrepRecords as $sitrep)
+SUBJECT:{{ $sitrep->subject }} <br>
+@endforeach
+DATE:<br>
+
+
+<br><br>A. <strong>GENERAL WEATHER CONDITION</strong> 
+@foreach ($sitrepRecords as $sitrep)
+{{$sitrep->userName}}
+<table style="border-collapse: collapse;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #ddd; padding: 8px;">Province</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">General Weather Condition</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">TCWS</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">{{ $sitrep->province }}</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">{{ $sitrep->general_weather_condition }}</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">{{ $sitrep->tcws }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+@endforeach
+<br><br>
+<strong>B. DAM SITUATION</strong>
+@foreach ($sitrepRecords as $sitrep) <br>
+{{$sitrep->userName}}
+<table style="border-collapse: collapse;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #ddd; padding: 8px;">Spilling Level</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">Date and Time</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">Current Level</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">Opening of Gate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">{{ $sitrep->dam->spilling_level }}</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">{{ $sitrep->dam->date_and_time }}</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">{{ $sitrep->dam->current_level }}</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">{{ $sitrep->dam->opening_of_gate ? 'Yes' : 'No' }}</td>
+        </tr>
+    </tbody>
+</table>
+@endforeach
+<br><br>
+<label class="form-label"><br>I. Effects</label> <br>
+<label class="form-label">A. Related Incident</label>
+
+@php
+    $totalRelatedIncidents = 0; // Initialize the variable outside the loop
+@endphp
+
+@foreach ($sitrepRecords as $sitrep)
+    @php
+        $totalRelatedIncidents += $sitrep->related_incident; // Increment the variable within the loop
+    @endphp
+@endforeach
+
+<!-- Display the total after the loop -->
+<p>Total Related Incidents: {{ $totalRelatedIncidents }}</p>
+
+<label class="form-label">B.Affected Population:</label>
+
+@php
+    $totalAffectedPopulation = 0; // Initialize the variable outside the loop
+@endphp
+
+@foreach ($sitrepRecords as $sitrep)
+    @php
+        $totalAffectedPopulation += $sitrep->affected_population; // Increment the variable within the loop
+    @endphp
+@endforeach
+
+<!-- Display the total affected population after the loop -->
+<p>Total Affected Population: {{ $totalAffectedPopulation }} families have been reported</p>
+
+<label class="form-label">C. Casualties</label>
+
+@php
+    $totalCasualties = 0; // Initialize the variable outside the loop
+@endphp
+
+@foreach ($sitrepRecords as $sitrep)
+    @php
+        $totalCasualties += $sitrep->casualties; // Increment the variable within the loop
+    @endphp
+@endforeach
+
+<!-- Display the total casualties after the loop -->
+<p>A total of {{ $totalCasualties }} reported</p>
+<br>
+<label class="form-label">D. Status of Lifelines</label>
+<label class="form-label">A. Roads and Bridges</label>
+@php
+    $totalRoadNotPassableAllType = 0; // Initialize the variable outside the loop
+@endphp
+
+@foreach ($sitrepRecords as $sitrep)
+    @php
+        $totalRoadNotPassableAllType += $sitrep->road_bridges->road_not_passable_all_type;
+    @endphp
+@endforeach
+
+<!-- Display the total after the loop -->
+<p>Total Road Not Passable (All Type): {{ $totalRoadNotPassableAllType ?: 'None reported' }}</p>
+@php
+    $totalRoadPassableAllLight = 0; // Initialize the variable outside the loop
+@endphp
+
+@foreach ($sitrepRecords as $sitrep)
+    @php
+        $totalRoadPassableAllLight += $sitrep->road_bridges->road_passable_all_light;
+    @endphp
+@endforeach
+
+<!-- Display the total after the loop -->
+<p>Total Road Passable (All Light): {{ $totalRoadPassableAllLight ?: 'None reported' }}</p>
+@php
+    $totalRoadPassableAllType = 0; // Initialize the variable outside the loop
+@endphp
+
+@foreach ($sitrepRecords as $sitrep)
+    @php
+        $totalRoadPassableAllType += $sitrep->road_bridges->road_passable_all_type;
+    @endphp
+@endforeach
+
+<!-- Display the total after the loop -->
+<p>Total Road Passable (All Type): {{ $totalRoadPassableAllType ?: 'None reported' }}</p>
+@php
+    $totalBridgeNotPassableAllType = 0; // Initialize the variable outside the loop
+@endphp
+
+@foreach ($sitrepRecords as $sitrep)
+    @php
+        $totalBridgeNotPassableAllType += $sitrep->road_bridges->bridge_not_passable_all_type;
+    @endphp
+@endforeach
+
+<!-- Display the total after the loop -->
+<p>Total Bridge Not Passable (All Type): {{ $totalBridgeNotPassableAllType ?: 'None reported' }}</p>
+@php
+    $totalBridgePassableAllLight = 0; // Initialize the variable outside the loop
+@endphp
+
+@foreach ($sitrepRecords as $sitrep)
+    @php
+        $totalBridgePassableAllLight += $sitrep->road_bridges->bridge_passable_all_light;
+    @endphp
+@endforeach
+
+<!-- Display the total after the loop -->
+<p>Total Bridge Passable (All Light): {{ $totalBridgePassableAllLight ?: 'None reported' }}</p>
+@php
+    $totalPower = 0;
+    $totalWater = 0;
+    $totalCommunicationLines = 0;
+    $totalDamageToAgriculture = 0;
+    $totalDamageToInfrastructure = 0;
+    $totalClassSuspension = 0;
+    $totalWorkSuspension = 0;
+    $totalStateOfCalamity = 0;
+    $totalPreemptiveEvacuation = 0;
+    $totalPreemptiveEvacuationAnimals = 0;
+@endphp
+
+@foreach ($sitrepRecords as $sitrep)
+    @php
+        $totalPower += $sitrep->power ?? 0;
+        $totalWater += $sitrep->water ?? 0;
+        $totalCommunicationLines += $sitrep->communication_lines ?? 0;
+        $totalDamageToAgriculture += $sitrep->damage_to_agriculture ?? 0;
+        $totalDamageToInfrastructure += $sitrep->damage_to_infrastructure ?? 0;
+        $totalClassSuspension += $sitrep->class_suspension ? 1 : 0;
+        $totalWorkSuspension += $sitrep->work_suspension ? 1 : 0;
+        $totalStateOfCalamity += $sitrep->state_of_calamity ? 1 : 0;
+        $totalPreemptiveEvacuation += $sitrep->preemptive_evacuation ? 1 : 0;
+        $totalPreemptiveEvacuationAnimals += $sitrep->preemptive_evacuation_animals ? 1 : 0;
+    @endphp
+    <!-- Your existing code for individual records goes here -->
+@endforeach
+
+<!-- Display the totals after the loop -->
+<p><strong>Power:</strong> A total of {{ $totalPower }} power interruption reported</p>
+<p><strong>Water:</strong> A total of {{ $totalWater }} water interrupted reported</p>
+<p><strong>Communication Lines:</strong> A total of {{ $totalCommunicationLines }} communication line interruption</p>
+<p><strong>Damage to Agriculture:</strong> A total of {{ $totalDamageToAgriculture }}</p>
+<p><strong>Damage to Infrastructure:</strong> A total of {{ $totalDamageToInfrastructure }}</p>
+<p><strong>Class Suspension:</strong> A total of {{ $totalClassSuspension }}</p>
+<p><strong>Work Suspension:</strong> A total of {{ $totalWorkSuspension }}</p>
+<p><strong>State of Calamity:</strong> A total of {{ $totalStateOfCalamity }}</p>
+<p><strong>Preemptive Evacuation:</strong> A total of {{ $totalPreemptiveEvacuation }}</p>
+<p><strong>Preemptive Evacuation (Animals):</strong> A total of {{ $totalPreemptiveEvacuationAnimals }}</p>
+@php
+    $totalAssistanceProvided = 0; // Initialize the variable outside the loop
+@endphp
+
+@foreach ($sitrepRecords as $sitrep)
+    @php
+        $totalAssistanceProvided += $sitrep->assistance_provided ? 1 : 0;
+    @endphp
+    <!-- Your existing code for individual records goes here -->
+  
+@endforeach
+
+<!-- Display the total after the loop -->
+<p><strong>Total Assistance Provided:</strong> {{ $totalAssistanceProvided ?: 'None reported' }}</p>
