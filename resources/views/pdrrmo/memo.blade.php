@@ -77,6 +77,7 @@
                   <table class="table" id="table-data">
     <thead>
         <tr>
+            <th>ID</th>
             <th>Subject</th>
             <th>Memo</th>
             <th>Date Created</th>
@@ -86,6 +87,7 @@
     <tbody>
         @forelse ($memos as $memo)
             <tr>
+                <td>{{ $memo->id }}</td>
                 <td>{{ $memo->subject }}</td>
                 <td>
                     @if ($memo->attachments)
@@ -411,6 +413,7 @@ function checkFileSize(input) {
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
+        order: [[0, "desc"]]
     } );
 } );
   </script>
