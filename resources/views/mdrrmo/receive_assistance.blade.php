@@ -260,13 +260,9 @@
           <div class="form-group" id="referToField" style="display: none;">
             <label for="owner">Refer To:</label>
             <select id="owner" name="owner" class="form-control">
-              <option value="" selected disabled>Select Office</option>
-              @forelse ($owners as $user)
-                <option value="{{ $user->id}}">{{ $user->name}}</option>
-              @empty
-              @endforelse
+                <option value="" selected disabled>Select Office</option>
             </select>
-          </div>
+        </div>
 
           <div class="form-group">
             <label for="comment">Message:</label>
@@ -382,11 +378,15 @@
                       return $(this).text() === status;
                   }).prop('selected', true);
               }
+              var requestorId = response.userId;
+              var ownerId = response.ownerId;
+              generateDropdownOptions(requestorId, ownerId);
         //Update the modal fields with the fetched data
             $('#locationName').val(response.location);
             $('#userid').val(response.userId);
             $('#comment').val(response.comment);
             $('#locationLabel').text(response.location);
+            $('#requestorid').text(response.userId);
             $('#id-req').val(response.id);
             $('#dateHappened').val(response.date_happened);
             $('#dateNeeded').val(response.date_needed);
@@ -490,6 +490,19 @@ function updateModalContent(response) {
     } else {
       referToField.style.display = 'none';
     }
+  }
+  function generateDropdownOptions(requestorId, ownerId) {
+    // Clear existing options
+    $('#owner').empty();
+
+    // Dynamically generate options based on the requestor ID
+    @forelse ($owners as $user)
+        var userId = "{{ $user->id }}";
+        if (userId != requestorId && userId != ownerId) {
+            $('#owner').append('<option value="' + userId + '">' + '{{ $user->name }}' + '</option>');
+        }
+    @empty
+    @endforelse;
   }
 </script>
 

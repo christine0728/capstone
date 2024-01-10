@@ -131,7 +131,12 @@
                                     <button type="button" class="btn btn-info rounded">
                                         <i style="color: white; font-size: 12px;" class="fa fa-history"></i>
                                     </button>
-                                </a>
+                                </a>&nbsp;&nbsp;
+                                <a href="#" class="btn-edit" data-toggle="modal" data-id="{{ $report->id }}" data-target="#modalStatus">
+                                  <button type="button" class="btn btn-success rounded">
+                                      <i style="color: white; font-size: 12px;" class="fa fa-edit"></i>
+                                  </button>
+                              </a>
                                 @else
                                 <a href="#" class="btn-edit" data-toggle="modal" data-id="{{ $report->id }}" data-target="#modalStatus">
                                   <button type="button" class="btn btn-success rounded">
@@ -256,13 +261,9 @@
           <div class="form-group" id="referToField" style="display: none;">
             <label for="owner">Refer To:</label>
             <select id="owner" name="owner" class="form-control">
-              <option value="" selected disabled>Select Office</option>
-              @forelse ($owners as $user)
-                <option value="{{ $user->id}}">{{ $user->name}}</option>
-              @empty
-              @endforelse
+                <option value="" selected disabled>Select Office</option>
             </select>
-          </div>
+        </div>
 
           <div class="form-group">
             <label for="comment">Message:</label>
@@ -398,7 +399,6 @@ function updateModalContent(response) {
 
 </script>
 <script>
-
   $(document).on('click', '.btn-edit', function() {
     // Get the data ID attribute from the clicked Edit button
     var id = $(this).data('id');
@@ -428,7 +428,8 @@ function updateModalContent(response) {
                       return $(this).text() === status;
                   }).prop('selected', true);
               }
-
+              var requestorId = response.userId;
+              generateDropdownOptions(requestorId);
             $('#requestby').text(response.name);
             $('#stat-update').text(formattedDate);
             $('#message').text(response.comment);
@@ -438,6 +439,7 @@ function updateModalContent(response) {
             $('#locationName').val(response.location);
             $('#locationLabel').text(response.location);
             $('#userid').val(response.userId);
+            $('#requestorid').text(response.userId);
             $('#id-req').val(response.id);
             $('#dateHappened').val(response.date_happened);
             $('#dateNeeded').val(response.date_needed);
@@ -481,6 +483,19 @@ function updateModalContent(response) {
     } else {
       referToField.style.display = 'none';
     }
+  }
+  function generateDropdownOptions(requestorId) {
+    // Clear existing options
+    $('#owner').empty();
+
+    // Dynamically generate options based on the requestor ID
+    @forelse ($owners as $user)
+        var userId = "{{ $user->id }}";
+        if (userId != requestorId) {
+            $('#owner').append('<option value="' + userId + '">' + '{{ $user->name }}' + '</option>');
+        }
+    @empty
+    @endforelse;
   }
 </script>
 
@@ -597,6 +612,7 @@ function updateModalContent(response) {
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
+        order: [[0, "desc"]]
     } );
 } );
   </script>
