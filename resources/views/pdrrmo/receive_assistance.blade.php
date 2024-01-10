@@ -429,7 +429,8 @@ function updateModalContent(response) {
                   }).prop('selected', true);
               }
               var requestorId = response.userId;
-              generateDropdownOptions(requestorId);
+              var ownerId = response.ownerId;
+              generateDropdownOptions(requestorId, ownerId);
             $('#requestby').text(response.name);
             $('#stat-update').text(formattedDate);
             $('#message').text(response.comment);
@@ -484,14 +485,14 @@ function updateModalContent(response) {
       referToField.style.display = 'none';
     }
   }
-  function generateDropdownOptions(requestorId) {
+  function generateDropdownOptions(requestorId, ownerId) {
     // Clear existing options
     $('#owner').empty();
 
     // Dynamically generate options based on the requestor ID
     @forelse ($owners as $user)
         var userId = "{{ $user->id }}";
-        if (userId != requestorId) {
+        if (userId != requestorId && userId != ownerId) {
             $('#owner').append('<option value="' + userId + '">' + '{{ $user->name }}' + '</option>');
         }
     @empty
