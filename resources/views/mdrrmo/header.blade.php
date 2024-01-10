@@ -13,7 +13,7 @@
                     <li class="dropdown nav-item ">
                 
                         <a href="#" class="nav-link text-white" data-toggle="dropdown">
-                            <span class="material-icons text-white">notifications</span>
+                        <i class="fa fa-bell" style="color: white; font-size: 24px;"></i>
                             <span class="notification">{{$unread}}</span>
                         </a>
                         <ul class="dropdown-menu" style="max-height: 300px; overflow-y: auto;">
@@ -72,7 +72,7 @@
                     </li>
                     <li class="dropdown nav-item">
     <a href="#" class="nav-link text-white" data-toggle="dropdown">
-    <span class="material-icons text-white">email</span>
+    <i class="fa fa-envelope" style="color: white; font-size: 24px;"></i>
     <span class="notification">{{$chatnotif}}</span>
     </a>
     <ul class="dropdown-menu" style="max-height: 300px; overflow-y: auto;">

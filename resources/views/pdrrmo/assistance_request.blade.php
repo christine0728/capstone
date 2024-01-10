@@ -9,21 +9,20 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
 
     <!-- Font Awesome CSS -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 
 
         <!-- Include Bootstrap CSS (you can change the version if needed) -->
       <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
       <!-- Include your custom CSS file (if you have one) -->
-      <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+ 
 
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
   
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
       <link rel="stylesheet" type="text/css" href="{{asset('/css/style.css')}}">
     
   </head>

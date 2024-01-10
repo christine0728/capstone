@@ -11,6 +11,7 @@
 
     <!-- Font Awesome CSS -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 
             <!-- Include Bootstrap CSS (you can change the version if needed) -->
       <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
@@ -21,10 +22,8 @@
       <!----css3---->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
+
       <link rel="stylesheet" type="text/css" href="{{asset('/css/style.css')}}">
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
   </head>
@@ -706,6 +705,7 @@ dateNeededLabel.text(response.date_needed ? new Date(response.date_needed).toLoc
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
+        order: [(0, "desc")]
     } );
 } );
   </script>

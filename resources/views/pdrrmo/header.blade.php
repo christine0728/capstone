@@ -9,7 +9,8 @@
                           <div class="collapse navbar-collapse d-lg-block d-xl-block d-sm-none d-md-none d-none" id="navbarSupportedContent">
                               <ul class="nav navbar-nav ml-auto">   
                                   <li class="dropdown nav-item">
-                                    <a href="#" class="nav-link" data-toggle="dropdown"><span class="material-icons">notifications</span>
+                                    <a href="#" class="nav-link" data-toggle="dropdown"><i class="fa fa-bell" style="color: white; font-size: 24px;"></i>
+
                                         <span class="notification">{{$unread}}</span>
                                     </a>
                                     <ul class="dropdown-menu" style="max-height: 300px;
@@ -54,7 +55,8 @@
                         </ul>
                                     <li class="dropdown nav-item">
     <a href="#" class="nav-link text-white" data-toggle="dropdown">
-    <span class="material-icons text-white">email</span>
+    <i class="fa fa-envelope" style="color: white; font-size: 24px;"></i>
+
     <span class="notification">{{$chatnotif}}</span>
     </a>
     <ul class="dropdown-menu" style="max-height: 300px; overflow-y: auto;">

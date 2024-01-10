@@ -22,8 +22,7 @@
         
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
       <link rel="stylesheet" type="text/css" href="{{asset('/css/style.css')}}">
     
 
@@ -1058,16 +1057,17 @@
     <!-- Include Buttons Print library -->
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
   
-  <script>
+    <script>
     $(document).ready(function() {
-    $('#table-data').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-  </script>
+        $('#table-data').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            order: [[0, 'desc']] // Assuming you want to sort the first column in descending order
+        });
+    });
+</script>
   
 <form action="/mdrrmo/edit-sitrep" method="post" >
      @csrf

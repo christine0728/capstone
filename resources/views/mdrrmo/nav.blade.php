@@ -38,19 +38,21 @@
             <ul class="list-unstyled components">
             <li class="{{ request()->is('') ? 'active' : '' }}" >
                 <a href="/" class="dashboard" style="color: white;">
-                    <i class="material-icons" style="color: white;">dashboard</i><span>Dashboard</span>
+                <i class="fas fa-tachometer-alt" style="color: white; font-size: 24px;"></i>
+<span>Dashboard</span>
                 </a>
             </li>
 
             <li class="{{ request()->is('mdrrmo/memo') ? 'active' : '' }}">
                 <a href="/mdrrmo/memo" class="dashboard" style="color: white; text-decoration: none;">
-                    <i class="material-icons" style="color: white;">note</i>
+                <i class="fas fa-file-alt" style="color: white; font-size: 24px;"></i>
+
                     <span style="">Memos<span style="color: red; font-size: 15px; margin-left: 4px; margin-right: 100px">+{{$unreadmemo}}</span></span>
                 </a>
             </li>
             <li class="dropdown {{ request()->is('mdrrmo/request-assistance') ? 'active' : '' }}">
                     <a href="#pageSubmenu6" style="color: white;" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="material-icons" style="color:white">support_agent</i><span>Assistance Request</span></a>
+                    <i class="fa fa-life-ring" style="color: white; font-size: 24px;"></i><span>Assistance Request</span></a>
                     <ul class="collapse list-unstyled menu" style="color: white;" id="pageSubmenu6">
 
                         <li class="{{ request()->is('mdrrmo/request-assistance') ? 'active' : '' }}">
@@ -67,7 +69,7 @@
 
             <li class="{{ request()->is('pdrrmo/sitrep') ? 'active' : '' }}">
     <a href="#pageSubmenu5" style="color: white;" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-        <i class="material-icons" style="color: white;">people</i><span>Situational Report</span>
+    <i class="fa fa-info-circle" style="color: white; font-size: 24px;"></i><span>Situational Report</span>
     </a>
     <ul class="collapse list-unstyled menu" id="pageSubmenu5">
         <li>
@@ -87,7 +89,7 @@
             
             <li class="dropdown">
                 <a href="#pageSubmenu4" style="color: white;" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <i class="material-icons" style="color: white;">schedule</i><span>Schedule</span>
+                <i class="fa fa-calendar" style="color: white; font-size: 24px;"></i><span>Schedule</span>
             </a>
                 <ul class="collapse list-unstyled menu" id="pageSubmenu4">
                 <li class="">
@@ -119,7 +121,7 @@
             </li> -->
             <li class="dropdown {{ request()->is('mdrrmo/personnel') ? 'active' : '' }}">
                 <a href="#pageSubmenu8" style="color: white;" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="material-icons" style="color: white;">people</i><span>Personnel</span>
+                <i class="fa fa-users" style="color: white; font-size: 24px;"></i><span>Personnel</span>
                 </a>
                 <ul class="collapse list-unstyled menu" id="pageSubmenu8">
                     <li class="{{ request()->is('mdrrmo/personnel') ? 'active' : '' }}">
@@ -136,13 +138,13 @@
 
             <li class="{{ request()->is('mdrrmo/MyAccount') ? 'active' : '' }}">
                 <a href="/mdrrmo/MyAccount" class="dashboard" style="color: white;">
-                    <i class="material-icons" style="color: white;">account_circle</i><span>My Account</span>
+                <i class="fa fa-user" style="color: white; font-size: 24px;"></i><span>My Account</span>
                 </a>
             </li>
                 <li>
                     <div style="display: flex; align-items: center;">
                         <a href="{{ route('logout') }}" class="dashboard" style="color: white; text-decoration: none; display: flex; align-items: center;">
-                            <i class="material-icons" style="color: white; margin-right: 5px;">exit_to_app</i>
+                        <i class="fa fa-sign-out" style="color: white; font-size: 24px;"></i>
                             <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                                 @csrf
                                 <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();" style="color: white; text-decoration: none;">

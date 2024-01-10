@@ -19,8 +19,7 @@
         
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
       <link rel="stylesheet" type="text/css" href="{{asset('/css/style.css')}}">
     
   </head>
@@ -37,6 +36,7 @@
         <!-- Page Content  -->
         <div id="content">
  @include('/pdrrmo/header')
+ 
       <div class="main-content">
       <div class="page-content page-container" id="page-content">
              
@@ -46,6 +46,10 @@
               <div class="card" style="width: 105%">
                 <div class="card-body">
                   <h3>Situational Report</h3><br>
+                
+                  <a class="btn btn-primary btn-xs" href="/pdrrmo/export">
+                        export
+                    </a>
                       <form action="/pdrrmo/filter-sitrep" method="GET" class="form-inline">
                   <div class="form-group">
                           <label for="start_date">Start Date: </label>
@@ -69,16 +73,17 @@
                   <table class="table" id="table-data" style="width:100%">
                       <thead>
                         <tr>
+                        <th style="width: 150px;">Id</th>
                         <th style="width: 150px;">Municipality</th>
                         <th style="width: 150px;">Subject</th>    
                         <th style="width: 150px;">created_at</th>
-                        <th style="width: 150px;">Action</th>
+                        <th style="width: 150px;">Export</th>
                         </tr>
                       </thead>
                       <tbody>
                       @forelse ($sitreps as $sitrep)
                       <tr style="{{ $notificationId == $sitrep->id ? 'background-color: #8fd3f3;' : '' }}">
-   
+                      <td>{{ $sitrep->id }}</td>
                <td>{{ $sitrep->municipality }}</td>
                <td>{{ $sitrep->subject_name }} {{$notificationId}}</td>
              
@@ -88,7 +93,7 @@
                    
                  
                 <a class="btn btn-primary btn-xs" href="{{ route('sitrep.detail', ['id' => $sitrep->id]) }}">
-                        <i style="color: white; font-size: 12px;" class="fas fa-eye"></i>
+                <i class="fas fa-file-export" style="color: white; font-size: 15px;"></i>
                     </a>
               </div>                 
                   </td>
@@ -650,18 +655,17 @@
     
     <!-- Include Buttons Print library -->
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
-  
-  <script>
+    <script>
     $(document).ready(function() {
-    $('#table-data').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-  </script>
-  
+        $('#table-data').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            order: [[0, 'desc']] // Assuming you want to sort the first column in descending order
+        });
+    });
+</script>
 
 
 <div class="modal fade right" id="modalList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">

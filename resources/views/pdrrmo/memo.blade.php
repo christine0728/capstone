@@ -7,25 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <title>Memo
     </title>
-    <!-- Font Awesome CSS -->
+            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-       
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-      <!-- Include Bootstrap CSS (you can change the version if needed) -->
-      <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
-      <!-- Include your custom CSS file (if you have one) -->
-      <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
 
-        
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="{{asset('/css/style.css')}}">
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+
+
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+
+        <!-- Remove duplicate Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+        <!-- Remove duplicate Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <!-- Remove duplicate DataTables CSS -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
   </head>
 
@@ -54,6 +64,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Memo</h4>
+                  
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAdd">Send Memo</button> <p>
                   <form action="/pdrrmo/filter-memos" method="GET" class="form-inline">
                       <div class="form-group">
@@ -77,7 +88,11 @@
                   <table class="table" id="table-data">
     <thead>
         <tr>
+<<<<<<< Updated upstream
             <th>ID</th>
+=======
+            <th>Id</th>
+>>>>>>> Stashed changes
             <th>Subject</th>
             <th>Memo</th>
             <th>Date Created</th>
@@ -87,7 +102,11 @@
     <tbody>
         @forelse ($memos as $memo)
             <tr>
+<<<<<<< Updated upstream
                 <td>{{ $memo->id }}</td>
+=======
+            <td>{{ $memo->id }}</td>
+>>>>>>> Stashed changes
                 <td>{{ $memo->subject }}</td>
                 <td>
                     @if ($memo->attachments)
@@ -99,7 +118,7 @@
                 <td>{{ date('F d, Y g:ia', strtotime($memo->created_at)) }}</td>
                 <td>
                     @if ($memo->memoMunicipalities->isNotEmpty())
-                        <button class="btn btn-primary toggleRecipients" data-memo-id="{{ $memo->id }}">Show Recipients</button>
+                        <button class="btn btn-primary toggleRecipients" data-memo-id="{{ $memo->id }}" style="font-size:13px;">Recipients</button>
                         <ul class="recipientsList" id="recipientsList_{{ $memo->id }}" style="display:none;">
                             @foreach ($memo->memoMunicipalities as $memoMunicipality)
                                 <li>
@@ -148,22 +167,7 @@
     </div>
 
 
-  
-  <script type="text/javascript">
-  $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-        $('#content').toggleClass('active');
-            });
-      
-       $('.more-button,.body-overlay').on('click', function () {
-                $('#sidebar,.body-overlay').toggleClass('show-nav');
-            });
-      
-        }); 
-</script>
-</body>
-</html>
+    
 <div class="modal fade right" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
   <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
     <!-- Content -->
@@ -177,7 +181,7 @@
       <div class="modal-body">
       <form action="/pdrrmo/insert-memo" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
           @csrf
-          <div class="container">
+         
             <div class="form-group">
               <label for="subject" class="req-label">Memo Subject</label><span class="text-danger">*</span>
               <input type="text" class="form-control" name="subject" id="subject" placeholder="Enter subject" autocomplete="off" value="{{ old('subject') }}" required>
@@ -191,36 +195,36 @@
               @error('notes')
               <div class="text-danger">{{ $message }}</div>
               @enderror
-            </div>
+            </div> <br>
             <div class="form-group">
                 <label>
-                    <input type="checkbox" name="send_to_all" value="1" id="send-to-all"> Send to All Municipalities
+                    <input type="checkbox" name="send_to_all" value="1" id="send-to-all" > Send to All Municipalities
                 </label>
             </div>
 
             <div id="recipients-container" style="display: none;">
                 <div class="form-group">
                     <label for="recipients">Select Recipients:</label>
-                    <select name="recipients[]" multiple class="form-control">
+                    <select name="recipients[]" multiple class="form-control" id="recipients">
                         @foreach ($recepient as $municipality)
                         <option value="{{ $municipality->id }}">{{ $municipality->name }}</option>
                         @endforeach
                     </select>
+                    <div id="recipients-error" class="text-danger" style="display: none;">Please select recipients.</div>
                 </div>
             </div>
-
             
-            </div>
+     
             <div class="form-group">
             <label class="req-label">Attach Memo</label><span class="text-danger">*</span>
             <br>
             <div class="custom-file">
-                <input type="file" class="custom-file-input" id="attachments" name="attachments" accept=".pdf, .doc, .docx" required onchange="displayFileName()">
+                 <input type="file" class="custom-file-input" id="attachments" name="attachments" accept=".pdf" required onchange="displayFileName()">
+
                 <label class="custom-file-label" for="attachments" id="file-name-display">Choose file</label>
             </div>
-        </div>
-
-          </div>
+  
+    
           <div class="modal-footer" style="justify-content: flex-end;">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Send</button>
@@ -230,9 +234,9 @@
      
     </div>
 
-    <!-- /.Content -->
   </div>
 </div>
+
 
 <!-- modaledit -->
 <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel" aria-hidden="true">
@@ -288,6 +292,12 @@
 </div>
 
 
+
+
+
+</body>
+</html>
+
 @if(session('success'))
 <script>
     Swal.fire({
@@ -297,23 +307,78 @@
     });
 </script>
 @endif
+<!-- jQuery -->
+<script src="{{ asset('js/jquery-3.5.1.slim.min.js') }}"></script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Popper.js -->
+<script src="{{ asset('js/popper.min.js') }}"></script>
+
+<!-- Bootstrap JS -->
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $('#content').toggleClass('active');
+        });
+
+        $('.more-button, .body-overlay').on('click', function () {
+            $('#sidebar, .body-overlay').toggleClass('show-nav');
+        });
+    });
+</script>
+
 
     <script>
-        function displayFileName() {
-            const fileInput = document.getElementById('attachments');
-            const fileNameDisplay = document.getElementById('file-name-display');
-            const fileName = fileInput.files[0].name;
-            fileNameDisplay.textContent = fileName;
+       function displayFileName() {
+        var input = document.getElementById('attachments');
+        var display = document.getElementById('file-name-display');
+        
+        // Check if a file is selected
+        if (input.files.length > 0) {
+            // Get the file size in megabytes
+            var fileSizeInMB = input.files[0].size / (1024 * 1024);
+
+            // Check if the file size exceeds 5 MB
+            if (fileSizeInMB > 5) {
+                // Display an alert
+                alert('File size should not exceed 5 MB.');
+                // Clear the file input
+                input.value = "";
+                // Reset the file name display
+                display.innerHTML = 'Choose file';
+                return;
+            }
+
+            // Display the selected file name
+            display.innerHTML = input.files[0].name;
+        } else {
+            // If no file is selected, reset the file name display
+            display.innerHTML = 'Choose file';
         }
-    </script>
-<script>
-  
+    }
 
+    function validateForm() {
+        var input = document.getElementById('attachments');
 
+        // Check if a file is selected
+        if (input.files.length > 0) {
+            // Get the file size in megabytes
+            var fileSizeInMB = input.files[0].size / (1024 * 1024);
+
+            // Check if the file size exceeds 5 MB
+            if (fileSizeInMB > 5) {
+                // Display an alert
+                alert('File size should not exceed 5 MB.');
+                return false; // Prevent form submission
+            }
+        }
+
+        // Your other form validation logic here
+
+        return true; // Allow form submission
+    }
   $(document).on('click', '.btn-edit', function() {
     // Get the data ID attribute from the clicked Edit button
     var id = $(this).data('id');
@@ -365,8 +430,6 @@ function checkFileSize(input) {
         document.getElementById('fileSizeError').textContent = '';
     }
 }
-</script>
-<script>
  $(document).ready(function () {
         // Toggle the visibility of the recipients list when the button is clicked
         $('.toggleRecipients').on('click', function () {
@@ -398,16 +461,15 @@ function checkFileSize(input) {
     
     <!-- Include PDFMake libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    
-    <!-- Include Buttons HTML5 library -->
+  
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     
     <!-- Include Buttons Print library -->
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
   
-  <script>
+    <script>
     $(document).ready(function() {
+<<<<<<< Updated upstream
     $('#table-data').DataTable( {
         dom: 'Bfrtip',
         buttons: [
@@ -417,3 +479,31 @@ function checkFileSize(input) {
     } );
 } );
   </script>
+=======
+        $('#table-data').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            order: [[0, 'desc']] // Assuming you want to sort the first column in descending order
+        });
+    });
+</script>
+<!-- Add this script to your HTML file -->
+<script>
+        function validateForm() {
+            var sendToAllCheckbox = document.getElementById("send-to-all");
+            var recipientsSelect = document.getElementById("recipients");
+            var recipientsError = document.getElementById("recipients-error");
+
+            if (!sendToAllCheckbox.checked && recipientsSelect.value.length === 0) {
+                recipientsError.style.display = "block";
+                alert("Please select recipients or check 'Send to All Municipalities'");
+                return false; // Prevent form submission
+            } else {
+                recipientsError.style.display = "none";
+                return true; // Allow form submission
+            }
+        }
+    </script>
+>>>>>>> Stashed changes

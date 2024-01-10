@@ -43,13 +43,18 @@
         }
 
         a:hover {
-            background-color: #2980b9;
+           
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Email Verification</h1>
+        <h5 class="card-title">  
+        <a href="https://imgbb.com/" style="text-decoration: none;">
+    <img src="https://i.ibb.co/zX5T55b/logo.png" alt="logo" style="display: block; border: 0; margin: 0; padding: 0; width: 150px;">
+</a>
+
         <p>Hello,</p>
         <p>This is from Pangasinan PDRRMO.</p>
         <p>Your temporary access code: {{ $randomPassword }}</p>

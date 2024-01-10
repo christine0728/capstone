@@ -12,16 +12,16 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
       <!----css3---->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 
       <link rel="stylesheet" href="css/custom.css">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ 
 
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
   
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
       <link rel="stylesheet" type="text/css" href="{{asset('/css/style.css')}}">
 
     
@@ -108,7 +108,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="stats">
-                        <i class="material-icons text-info">info</i> Current Weather Information
+                    <i class="fa fa-info-circle" style="color: #17a2b8; font-size: 20px;"></i> Current Weather Information
                         <a href="#pablo"></a>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
             <div class="card card-stats">
                 <div class="card-header">
                     <div class="icon icon-warning">
-                        <span class="material-icons">people</span>
+                    <i class="fa fa-user" style="font-size: 45px;"></i>
                     </div>
                 </div>
                 <div class="card-content">
@@ -127,7 +127,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="stats">
-                        <i class="material-icons text-info">info</i> Total Population Info
+                    <i class="fa fa-info-circle" style="color: #17a2b8; font-size: 20px;"></i> Total Population Info
                         <a href="#pablo"></a>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
             <div class="card card-stats">
                 <div class="card-header">
                     <div class="icon icon-warning">
-                        <span class="material-icons">people</span>
+                    <i class="fa fa-user" style="font-size: 45px;"></i>
                     </div>
                 </div>
                 <div class="card-content">
@@ -147,7 +147,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="stats">
-                        <i class="material-icons text-info">info</i> Total Personnel Info
+                    <i class="fa fa-info-circle" style="color: #17a2b8; font-size: 20px;"></i>Total Personnel Info
                         <a href="#pablo">
 
                         </a>
@@ -168,7 +168,7 @@
                             <div class="card card-stats">
                                 <div class="card-header">
                                 <div class="icon icon-warning">
-                                    <span class="material-icons">send</span>
+                                <i class="fa fa-paper-plane" style=" font-size: 50px;"></i>
                                 </div>
 
 
@@ -186,7 +186,7 @@
                             <div class="card card-stats">
                                 <div class="card-header">
                                 <div class="icon icon-warning">
-                                    <span class="material-icons" style="color: green;">check_circle</span>
+                                <i class="fa fa-check" style="color: #28a745; font-size: 50px;"></i>
                                 </div>
                                 </div>
                                 <div class="card-content">
@@ -202,7 +202,7 @@
                             <div class="card card-stats">
                                 <div class="card-header">
                                 <div class="icon icon-success">
-                                    <span class="material-icons" style="color: red;">cancel</span>
+                                <i class="fa fa-times" style="color: red; font-size: 50px;"></i>
                                 </div>
 
 
@@ -221,7 +221,7 @@
                             <div class="card card-stats">
                                 <div class="card-header">
                                 <div class="icon icon-warning">
-                                    <span class="material-icons">schedule</span>
+                                <i class="fa fa-clock-o" style="color: orange; font-size: 50px;"></i>
                                 </div>
 
                                 </div>
@@ -241,7 +241,7 @@
                             <div class="card card-stats">
                                 <div class="card-header">
                                 <div class="icon icon-warning">
-                                    <span class="material-icons">send</span>
+                                <i class="fa fa-paper-plane" style=" font-size: 50px;"></i>
                                 </div>
 
 
@@ -259,7 +259,7 @@
                             <div class="card card-stats">
                                 <div class="card-header">
                                 <div class="icon icon-warning">
-                                    <span class="material-icons" style="color: green;">check_circle</span>
+                                <i class="fa fa-check" style="color: #28a745; font-size: 50px;"></i>
                                 </div>
                                 </div>
                                 <div class="card-content">
@@ -275,7 +275,7 @@
                             <div class="card card-stats">
                                 <div class="card-header">
                                 <div class="icon icon-success">
-                                    <span class="material-icons" style="color: red;">cancel</span>
+                                <i class="fa fa-times" style="color: red; font-size: 50px;"></i>
                                 </div>
 
 
@@ -294,7 +294,7 @@
                             <div class="card card-stats">
                                 <div class="card-header">
                                 <div class="icon icon-warning">
-                                    <span class="material-icons">schedule</span>
+                                <i class="fa fa-clock-o" style="color: orange; font-size: 50px;"></i>
                                 </div>
 
                                 </div>
@@ -313,7 +313,7 @@
     <h4>Charts and Graphs</h4>
 <div id="toggleIncidentCard" style="cursor: pointer;">
     <span style="font-weight: bold;">View Total Count of Occurrence of Each Incident</span>
-    <i class="material-icons text-info">arrow_drop_down</i>
+    <i class="fa fa-chevron-down text-info"></i>
 </div>
 
     <div class="row">
@@ -329,7 +329,7 @@
 
 <div id="toggleBarangayCard" style="cursor: pointer;">
     <span style="font-weight: bold;"> View Top Barangays Most Affected by the Incidents</span>
-    <i class="material-icons text-info">arrow_drop_down</i>
+    <i class="fa fa-chevron-down text-info"></i>
 </div>
 
 <div class="row">

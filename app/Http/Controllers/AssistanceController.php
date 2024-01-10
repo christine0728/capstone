@@ -299,7 +299,7 @@ class AssistanceController extends Controller
            
 }
 public function ReceivedNotifspd($notificationId){
-
+    
     $username=Auth()->user()->name;
     $currentUserId = Auth::id();
     $notification = Auth::user()->notifications()->findOrFail($notificationId);

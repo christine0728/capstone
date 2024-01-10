@@ -17,8 +17,7 @@
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css')}}">
 </head>
 <body>
@@ -56,6 +55,7 @@
                                     <button type="button" class="btn btn-primary" style="background: #3a9bdc" data-toggle="modal" data-target="#modalRelatedContent">Register Account</button>
                                     <br>
                                     <div class="table-responsive">
+                                        
                                         <table class="table">
                                             <thead>
                                                 <tr>
@@ -79,6 +79,8 @@
                                                     <td>{{ date('F d, Y g:ia', strtotime($account->created_at )) }}</td> 
                                                     <td>
                                                         <a href="#" class="btn btn-info btn-sm btn-details" data-toggle="modal" data-id="{{ $account->id }}" data-target="#modalEdit">More Details</a>
+                                                        <a href="#" class="btn btn-info btn-sm btn-details" data-toggle="modal" data-id="{{ $account->id }}" data-target="#modalEdit">More Details</a>
+                                                      
                                                         <a href="#" onclick="confirmDelete('{{ $account->id }}')" class="btn btn-danger btn-xs btn-sm">
                                         <i style="color: white; font-size: 12px;" class="fas fa-trash-alt"></i>
                                     </a>

@@ -150,7 +150,9 @@ Route::controller(SubjectController::class)->group(function(){
     
  }); 
      Route::controller(SitRepController::class)->group(function(){
+        
         Route::get('/sitrep', 'index');
+        Route::get('/export', 'exportfile');
         Route::post('/submit-sitrep', 'store');
         Route::get('/filter-sitrep', 'filter');
         Route::get('/sitrep-notifs/{id}', 'notifs');

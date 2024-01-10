@@ -6,14 +6,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Resquire</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+   
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/style.css')}}">
+   <link rel="stylesheet" type="text/css" href="{{asset('/css/style.css')}}">
 </head>
   <body>
 <div class="wrapper">
@@ -96,7 +99,7 @@
                   </td>
                       <td> 
                         <center>
-                  <a href="#" class="btn-edit" data-toggle="modal" data-id="{{ $memo->memo_id }}" data-target="#modalEdit" > <center><i class="far fa-eye text-primary"></i> </center></a>
+                  <a href="#" class="btn-edit btn btn-primary" data-toggle="modal" data-id="{{ $memo->memo_id }}" data-target="#modalEdit" > <center><i class="far fa-eye"></i> </center></a>
                   </center>
                 </td>
                   
@@ -139,7 +142,6 @@
     </div>
 </body>
 </html>
-<!-- modaledit -->
 <div class="modal fade right" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
     <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-danger" role="document">
         <div class="modal-content">
@@ -152,12 +154,15 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label class="req-label">Subject</label>
-                    <input type="hidden" name="memoId" id="memoId">
-                    <h5 id="subjects"></h5>
+                    <div class="border p-2">
+                        <span id="subjects"></span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="req-label">Notes</label>
-                    <h5 id="note"></h5>
+                    <div class="border p-2">
+                        <span id="note"></span>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer d-flex justify-content-end">
@@ -166,7 +171,6 @@
         </div>
     </div>
 </div>
-
 
 @if(session('success'))
 <script>
@@ -360,6 +364,7 @@
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
+        order: [(0, "desc")]
     } );
 } );
   </script>

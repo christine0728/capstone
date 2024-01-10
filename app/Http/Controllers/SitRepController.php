@@ -287,7 +287,7 @@ $currentUserName = Auth::user()->name;
 
         $pdrrmoUser = User::where('usertype', 'pdrrmo')->first();
 
-       $newlyInsertedId = $report->id;
+       $newlyInsertedId = $sitrep->id;
         Notification::send( $pdrrmoUser, new SitrepNotification($newlyInsertedId,'has sent a Situational Report', $currentUserName));
       
         // Redirect to a success page or return a response
@@ -412,6 +412,7 @@ return view('pdrrmo.export_sitrep', ['sitrep' => $sitrepRecords, 'subjects'=>$su
     
         $currentUserId = Auth::id();
         $notification = Auth::user()->notifications()->findOrFail($notificationId);
+     
         $notification->markAsRead();
         // Mark the notification as read
         $notification->markAsRead();
@@ -423,7 +424,7 @@ return view('pdrrmo.export_sitrep', ['sitrep' => $sitrepRecords, 'subjects'=>$su
         })
         ->get();
         
-        
+
         $notificationDataId = $notification->data['newid'];
         $sitreps = DB::table('sitreps')
         ->join('users', 'sitreps.userId', '=', 'users.id')
@@ -438,7 +439,7 @@ return view('pdrrmo.export_sitrep', ['sitrep' => $sitrepRecords, 'subjects'=>$su
           
         )
         ->get();
-
+    
         return view('pdrrmo.sitrep',  ['notificationId'=> $notificationDataId,'sitreps' => $sitreps]);
 
     }
@@ -464,6 +465,7 @@ return view('pdrrmo.export_sitrep', ['sitrep' => $sitrepRecords, 'subjects'=>$su
         $request->delete();
        return redirect()->back();
     }
+
     public function convertBladeToWord(Request $request)
     {
         // Render the Blade view to get the HTML content
@@ -485,5 +487,26 @@ return view('pdrrmo.export_sitrep', ['sitrep' => $sitrepRecords, 'subjects'=>$su
 
         // Force download the Word document
         return response()->download($filename)->deleteFileAfterSend();
+    }
+    public function exportfile()
+    {
+        //
+        $sitreps = DB::table('sitreps')
+        ->join('users', 'sitreps.userId', '=', 'users.id')
+        ->join('subjects', 'sitreps.subjectId', '=', 'subjects.id')
+        ->join('dams', 'sitreps.damId', '=', 'dams.id')
+        ->join('road_bridges', 'sitreps.roads_and_bridgesId', '=', 'road_bridges.id') // Adding join with road_bridges table
+        ->select(
+            'sitreps.*', // Select all columns from the sitreps table
+            'users.name as municipality',
+            'subjects.subject as subject_name',
+            'dams.*', // Select all columns from the dams table
+            'road_bridges.*' // Select all columns from the road_bridges table
+        )->get();
+    
+    
+                return view('pdrrmo.file_export', ['sitreps' => $sitreps]);
+  
+     
     }
 }
